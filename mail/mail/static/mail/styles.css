@@ -1,0 +1,464 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%; }
+  50% {
+    background-position: 100% 50%; }
+  100% {
+    background-position: 0% 50%; } }
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px); }
+  to {
+    opacity: 1;
+    transform: translateY(0); } }
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px); }
+  to {
+    opacity: 1;
+    transform: translateX(0); } }
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px); }
+  to {
+    opacity: 1;
+    transform: translateX(0); } }
+@keyframes pulse {
+  0%,
+    100% {
+    transform: scale(1); }
+  50% {
+    transform: scale(1.05); } }
+@keyframes ripple {
+  0% {
+    transform: scale(0);
+    opacity: 1; }
+  100% {
+    transform: scale(4);
+    opacity: 0; } }
+@keyframes buttonSlide {
+  from {
+    opacity: 0;
+    transform: translateX(-20px); }
+  to {
+    opacity: 1;
+    transform: translateX(0); } }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif; }
+
+body {
+  background: linear-gradient(135deg, #667eea97 0%, #764ba2b9 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite; }
+
+.container {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 24px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  max-width: 100%;
+  min-height: 90vh;
+  overflow: hidden;
+  animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
+  .container.email-container .container-inner {
+    padding: 0; }
+
+.container-inner {
+  padding: 30px; }
+
+.container-inner.active {
+  backdrop-filter: blur(5px);
+  z-index: 999;
+  display: none;
+  opacity: 0.5;
+  transition: opacity 0.3s ease; }
+
+.header {
+  padding: 20px 30px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(5px);
+  border-radius: 24px 24px 0 0; }
+  .header h2 {
+    background: linear-gradient(135deg, #667eea97 0%, #764ba2b9 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: 0;
+    animation: fadeInUp 0.6s ease 0.2s both; }
+  .header .user-email {
+    color: #666;
+    font-size: 0.9rem;
+    margin-top: 5px;
+    animation: fadeInUp 0.6s ease 0.3s both; }
+
+.navigation {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+  animation: fadeInUp 0.6s ease 0.4s both; }
+
+.btn, #compose-form input[type="submit"], #compose-form [type="submit"].form-control, #view-email .email-actions button {
+  padding: 12px 28px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 15px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 2px solid transparent;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  animation: fadeInUp 0.6s ease 0s both; }
+  .btn::before, #compose-form input[type="submit"]::before, #compose-form [type="submit"].form-control::before, #view-email .email-actions button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s; }
+  .btn:hover, #compose-form input[type="submit"]:hover, #compose-form [type="submit"].form-control:hover, #view-email .email-actions button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); }
+    .btn:hover::before, #compose-form input[type="submit"]:hover::before, #compose-form [type="submit"].form-control:hover::before, #view-email .email-actions button:hover::before {
+      width: 300px;
+      height: 300px; }
+  .btn:active, #compose-form input[type="submit"]:active, #compose-form [type="submit"].form-control:active, #view-email .email-actions button:active {
+    transform: translateY(-1px); }
+  .btn-outline-primary {
+    background: transparent;
+    background: linear-gradient(135deg, #667eea97 0%, #764ba2b9 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    border: 2px solid #667eea; }
+    .btn-outline-primary:hover {
+      background: linear-gradient(135deg, #667eea97 0%, #764ba2b9 100%);
+      -webkit-text-fill-color: white; }
+  .btn-primary, #compose-form input[type="submit"], #compose-form [type="submit"].form-control {
+    background: linear-gradient(135deg, #667eea97 0%, #764ba2b9 100%);
+    border: none;
+    color: white; }
+    .btn-primary:hover, #compose-form input[type="submit"]:hover, #compose-form [type="submit"].form-control:hover {
+      background: linear-gradient(135deg, #5a67d8, #6b46c1); }
+  .btn-success {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    border: none;
+    color: white; }
+    .btn-success:hover {
+      opacity: 0.9; }
+  .btn-danger {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    border: none;
+    color: white; }
+    .btn-danger:hover {
+      opacity: 0.9; }
+  .btn-sm, #view-email .email-actions button {
+    padding: 8px 20px;
+    font-size: 14px; }
+
+.auth-container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 40px 0; }
+  .auth-container h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    background: linear-gradient(135deg, #667eea97 0%, #764ba2b9 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 2.5rem;
+    animation: fadeInUp 0.6s ease 0s both; }
+
+.form-group {
+  margin-bottom: 25px;
+  animation: fadeInUp 0.6s ease 0.3s both; }
+  .form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+    font-weight: 500;
+    font-size: 0.9rem; }
+  .form-group input, .form-group .form-control {
+    width: 100%;
+    padding: 15px 20px;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.9); }
+    .form-group input:focus, .form-group .form-control:focus {
+      outline: none;
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+      background: white; }
+    .form-group input::placeholder, .form-group .form-control::placeholder {
+      color: #999; }
+
+#emails-view,
+#view-email,
+#compose-view {
+  padding: 30px;
+  animation: fadeInUp 0.5s ease; }
+
+.mails {
+  background: white;
+  padding: 20px;
+  margin: 12px 0;
+  border-radius: 16px;
+  border: 2px solid transparent;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: slideInRight 0.5s ease; }
+  .mails:hover {
+    transform: translateX(10px);
+    border-color: #667eea;
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2); }
+  .mails::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(135deg, #667eea97 0%, #764ba2b9 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease; }
+  .mails:hover::before {
+    opacity: 1; }
+  .mails strong {
+    color: #333;
+    font-weight: 600;
+    min-width: 150px; }
+  .mails > data {
+    color: #666;
+    margin-left: auto;
+    font-size: 0.9rem; }
+  .mails.read {
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    opacity: 0.8; }
+    .mails.read strong {
+      color: #666; }
+  .mails.unread {
+    background: linear-gradient(135deg, #ffffff, #f0f7ff); }
+    .mails.unread::after {
+      content: '';
+      position: absolute;
+      right: 15px;
+      width: 8px;
+      height: 8px;
+      background: #667eea;
+      border-radius: 50%;
+      animation: pulse 2s infinite; }
+
+#compose-view h3 {
+  background: linear-gradient(135deg, #667eea97 0%, #764ba2b9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 30px;
+  font-size: 1.8rem; }
+
+#compose-form .form-group input, #compose-form .form-group .form-control,
+#compose-form .form-group textarea {
+  background: rgba(255, 255, 255, 0.9);
+  border: 2px solid #e0e0e0; }
+  #compose-form .form-group input:focus, #compose-form .form-group .form-control:focus,
+  #compose-form .form-group textarea:focus {
+    background: white;
+    border-color: #667eea; }
+#compose-form textarea {
+  min-height: 300px;
+  padding: 20px;
+  border-radius: 16px;
+  font-size: 16px;
+  line-height: 1.6;
+  resize: vertical; }
+#compose-form input[type="submit"], #compose-form [type="submit"].form-control {
+  margin-top: 20px;
+  animation: pulse 2s infinite; }
+  #compose-form input[type="submit"]:hover, #compose-form [type="submit"].form-control:hover {
+    animation: none; }
+
+#view-email .email-header {
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+  padding: 25px;
+  border-radius: 16px;
+  margin-bottom: 30px; }
+  #view-email .email-header .email-meta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px; }
+    #view-email .email-header .email-meta div strong {
+      color: #667eea;
+      display: block;
+      margin-bottom: 5px; }
+    #view-email .email-header .email-meta div span {
+      color: #333;
+      font-size: 1rem; }
+#view-email .email-body {
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  line-height: 1.8;
+  color: #333;
+  font-size: 1.1rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); }
+  #view-email .email-body pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-family: inherit; }
+#view-email .email-actions {
+  display: flex;
+  gap: 15px;
+  margin-top: 30px; }
+
+.email-actions .btn-outline-success {
+  background: transparent;
+  color: #28a745;
+  border-color: #28a745; }
+  .email-actions .btn-outline-success:hover {
+    background: #28a745;
+    color: white; }
+
+.alert {
+  padding: 15px 25px;
+  border-radius: 12px;
+  margin: 20px 0;
+  border: none;
+  animation: fadeInUp 0.5s ease; }
+  .alert-danger {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white; }
+  .alert-success {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    color: white; }
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px; }
+  .loading .spinner {
+    width: 50px;
+    height: 50px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #667eea;
+    border-radius: 50%;
+    animation: spin 1s linear infinite; }
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(360deg); } }
+@media (max-width: 768px) {
+  .container {
+    border-radius: 20px;
+    min-height: auto; }
+
+  .header {
+    padding: 15px 20px; }
+    .header h2 {
+      font-size: 1.5rem; }
+
+  .navigation {
+    flex-direction: column;
+    align-items: stretch; }
+    .navigation .btn, .navigation #compose-form input[type="submit"], #compose-form .navigation input[type="submit"], .navigation #compose-form [type="submit"].form-control, #compose-form .navigation [type="submit"].form-control, .navigation #view-email .email-actions button, #view-email .email-actions .navigation button {
+      width: 100%;
+      margin: 5px 0;
+      text-align: center; }
+
+  .mails {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px; }
+    .mails strong {
+      min-width: auto; }
+    .mails > data {
+      margin-left: 0;
+      align-self: flex-end; }
+
+  #emails-view,
+  #view-email,
+  #compose-view {
+    padding: 20px; }
+
+  .email-actions {
+    flex-direction: column; }
+    .email-actions .btn, .email-actions #compose-form input[type="submit"], #compose-form .email-actions input[type="submit"], .email-actions #compose-form [type="submit"].form-control, #compose-form .email-actions [type="submit"].form-control, #view-email .email-actions button {
+      width: 100%; } }
+.delay-1 {
+  animation-delay: 0.1s; }
+
+.delay-2 {
+  animation-delay: 0.2s; }
+
+.delay-3 {
+  animation-delay: 0.3s; }
+
+.delay-4 {
+  animation-delay: 0.4s; }
+
+.delay-5 {
+  animation-delay: 0.5s; }
+
+.hover-lift {
+  transition: transform 0.3s ease; }
+  .hover-lift:hover {
+    transform: translateY(-5px); }
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 25px;
+  margin-bottom: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3); }
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0; }
+  to {
+    transform: translateX(0);
+    opacity: 1; } }
+@media (max-width: 576px) {
+  .delete-btn {
+    padding: 5px 10px;
+    font-size: 13px; }
+
+  .delete-modal .modal-content {
+    width: 95%;
+    padding: 20px; } }
+
+/*# sourceMappingURL=styles.css.map */

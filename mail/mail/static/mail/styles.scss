@@ -1,0 +1,717 @@
+// Modern Mail App Styles with Animations
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+// Color Variables
+$primary-gradient: linear-gradient(135deg, #667eea97 0%, #764ba2b9 100%);
+$secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+$success-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+$danger-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+
+// Mixins
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin fade-in-up($delay: 0s) {
+    animation: fadeInUp 0.6s ease $delay both;
+}
+
+@mixin slide-in-left($delay: 0s) {
+    animation: slideInLeft 0.6s ease $delay both;
+}
+
+@mixin slide-in-right($delay: 0s) {
+    animation: slideInRight 0.6s ease $delay both;
+}
+
+@mixin gradient-text {
+    background: $primary-gradient;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+@mixin card-shadow {
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+@mixin button-hover-effect {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+@mixin glass-effect {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+// Animations
+@keyframes gradientBG {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+@keyframes buttonSlide {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+// Global Styles
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: $primary-gradient;
+    min-height: 100vh;
+    @include flex-center;
+    padding: 20px;
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+}
+
+.container {
+    @include glass-effect;
+    border-radius: 24px;
+    @include card-shadow;
+    width: 100%;
+    max-width: 100%;
+    min-height: 90vh;
+    overflow: hidden;
+    animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+
+    // Email container specific
+    &.email-container {
+        .container-inner {
+            padding: 0;
+        }
+    }
+}
+
+.container-inner {
+    padding: 30px;
+}
+
+.container-inner.active {
+    backdrop-filter: blur(5px);
+    z-index: 999;
+    display: none;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+// Header & Navigation
+.header {
+    padding: 20px 30px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(5px);
+    border-radius: 24px 24px 0 0;
+
+    h2 {
+        @include gradient-text;
+        font-weight: 700;
+        font-size: 2rem;
+        margin-bottom: 0;
+        @include fade-in-up(0.2s);
+    }
+
+    .user-email {
+        color: #666;
+        font-size: 0.9rem;
+        margin-top: 5px;
+        @include fade-in-up(0.3s);
+    }
+}
+
+.navigation {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+    @include fade-in-up(0.4s);
+}
+
+// Button Styles
+.btn {
+    padding: 12px 28px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 15px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    @include fade-in-up;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.3);
+        transform: translate(-50%, -50%);
+        transition: width 0.6s, height 0.6s;
+    }
+
+    &:hover {
+        @include button-hover-effect;
+
+        &::before {
+            width: 300px;
+            height: 300px;
+        }
+    }
+
+    &:active {
+        transform: translateY(-1px);
+    }
+
+    &-outline-primary {
+        background: transparent;
+        @include gradient-text;
+        border: 2px solid #667eea;
+
+        &:hover {
+            background: $primary-gradient;
+            -webkit-text-fill-color: white;
+        }
+    }
+
+    &-primary {
+        background: $primary-gradient;
+        border: none;
+        color: white;
+
+        &:hover {
+            background: linear-gradient(135deg, #5a67d8, #6b46c1);
+        }
+    }
+
+    &-success {
+        background: $success-gradient;
+        border: none;
+        color: white;
+
+        &:hover {
+            opacity: 0.9;
+        }
+    }
+
+    &-danger {
+        background: $danger-gradient;
+        border: none;
+        color: white;
+
+        &:hover {
+            opacity: 0.9;
+        }
+    }
+
+    &-sm {
+        padding: 8px 20px;
+        font-size: 14px;
+    }
+}
+
+// Login & Register Forms
+.auth-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 40px 0;
+
+    h2 {
+        text-align: center;
+        margin-bottom: 30px;
+        @include gradient-text;
+        font-size: 2.5rem;
+        @include fade-in-up;
+    }
+}
+
+.form-group {
+    margin-bottom: 25px;
+    @include fade-in-up(0.3s);
+
+    label {
+        display: block;
+        margin-bottom: 8px;
+        color: #555;
+        font-weight: 500;
+        font-size: 0.9rem;
+    }
+
+    input {
+        width: 100%;
+        padding: 15px 20px;
+        border: 2px solid #e0e0e0;
+        border-radius: 12px;
+        font-size: 16px;
+        transition: all 0.3s ease;
+        background: rgba(255, 255, 255, 0.9);
+
+        &:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            background: white;
+        }
+
+        &::placeholder {
+            color: #999;
+        }
+    }
+}
+
+.form-control {
+    @extend input;
+}
+
+// Email Views
+#emails-view,
+#view-email,
+#compose-view {
+    padding: 30px;
+    animation: fadeInUp 0.5s ease;
+}
+
+// Email List
+.mails {
+    background: white;
+    padding: 20px;
+    margin: 12px 0;
+    border-radius: 16px;
+    border: 2px solid transparent;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    @include card-shadow;
+    animation: slideInRight 0.5s ease;
+
+    &:hover {
+        transform: translateX(10px);
+        border-color: #667eea;
+        box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 4px;
+        background: $primary-gradient;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    &:hover::before {
+        opacity: 1;
+    }
+
+    strong {
+        color: #333;
+        font-weight: 600;
+        min-width: 150px;
+    }
+
+    &>data {
+        color: #666;
+        margin-left: auto;
+        font-size: 0.9rem;
+    }
+
+    &.read {
+        background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        opacity: 0.8;
+
+        strong {
+            color: #666;
+        }
+    }
+
+    &.unread {
+        background: linear-gradient(135deg, #ffffff, #f0f7ff);
+
+        &::after {
+            content: '';
+            position: absolute;
+            right: 15px;
+            width: 8px;
+            height: 8px;
+            background: #667eea;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+    }
+}
+
+// Compose View
+#compose-view {
+    h3 {
+        @include gradient-text;
+        margin-bottom: 30px;
+        font-size: 1.8rem;
+    }
+}
+
+#compose-form {
+    .form-group {
+
+        input,
+        textarea {
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid #e0e0e0;
+
+            &:focus {
+                background: white;
+                border-color: #667eea;
+            }
+        }
+    }
+
+    textarea {
+        min-height: 300px;
+        padding: 20px;
+        border-radius: 16px;
+        font-size: 16px;
+        line-height: 1.6;
+        resize: vertical;
+    }
+
+    input[type="submit"] {
+        @extend .btn;
+        @extend .btn-primary;
+        margin-top: 20px;
+        animation: pulse 2s infinite;
+
+        &:hover {
+            animation: none;
+        }
+    }
+}
+
+// Email Detail View
+#view-email {
+    .email-header {
+        background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        padding: 25px;
+        border-radius: 16px;
+        margin-bottom: 30px;
+
+        .email-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+
+            div {
+                strong {
+                    color: #667eea;
+                    display: block;
+                    margin-bottom: 5px;
+                }
+
+                span {
+                    color: #333;
+                    font-size: 1rem;
+                }
+            }
+        }
+    }
+
+    .email-body {
+        background: white;
+        padding: 30px;
+        border-radius: 16px;
+        line-height: 1.8;
+        color: #333;
+        font-size: 1.1rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+
+        pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-family: inherit;
+        }
+    }
+
+    .email-actions {
+        display: flex;
+        gap: 15px;
+        margin-top: 30px;
+
+        button {
+            @extend .btn;
+            @extend .btn-sm;
+        }
+    }
+}
+
+// Archive Button Styling
+.email-actions {
+    .btn-outline-success {
+        background: transparent;
+        color: #28a745;
+        border-color: #28a745;
+
+        &:hover {
+            background: #28a745;
+            color: white;
+        }
+    }
+}
+
+// Message Alert
+.alert {
+    padding: 15px 25px;
+    border-radius: 12px;
+    margin: 20px 0;
+    border: none;
+    animation: fadeInUp 0.5s ease;
+
+    &-danger {
+        background: $danger-gradient;
+        color: white;
+    }
+
+    &-success {
+        background: $success-gradient;
+        color: white;
+    }
+}
+
+// Loading Animation
+.loading {
+    @include flex-center;
+    min-height: 200px;
+
+    .spinner {
+        width: 50px;
+        height: 50px;
+        border: 3px solid #f3f3f3;
+        border-top: 3px solid #667eea;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+    .container {
+        border-radius: 20px;
+        min-height: auto;
+    }
+
+    .header {
+        padding: 15px 20px;
+
+        h2 {
+            font-size: 1.5rem;
+        }
+    }
+
+    .navigation {
+        flex-direction: column;
+        align-items: stretch;
+
+        .btn {
+            width: 100%;
+            margin: 5px 0;
+            text-align: center;
+        }
+    }
+
+    .mails {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+
+        strong {
+            min-width: auto;
+        }
+
+        &>data {
+            margin-left: 0;
+            align-self: flex-end;
+        }
+    }
+
+    #emails-view,
+    #view-email,
+    #compose-view {
+        padding: 20px;
+    }
+
+    .email-actions {
+        flex-direction: column;
+
+        .btn {
+            width: 100%;
+        }
+    }
+}
+
+// Animation Delay Classes
+.delay-1 {
+    animation-delay: 0.1s;
+}
+
+.delay-2 {
+    animation-delay: 0.2s;
+}
+
+.delay-3 {
+    animation-delay: 0.3s;
+}
+
+.delay-4 {
+    animation-delay: 0.4s;
+}
+
+.delay-5 {
+    animation-delay: 0.5s;
+}
+
+// Hover Effects Enhancement
+.hover-lift {
+    transition: transform 0.3s ease;
+
+    &:hover {
+        transform: translateY(-5px);
+    }
+}
+
+// Glass Morphism Card
+.glass-card {
+    @include glass-effect;
+    border-radius: 20px;
+    padding: 25px;
+    margin-bottom: 20px;
+    @include card-shadow;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+// Responsive adjustments
+@media (max-width: 576px) {
+    .delete-btn {
+        padding: 5px 10px;
+        font-size: 13px;
+    }
+
+    .delete-modal .modal-content {
+        width: 95%;
+        padding: 20px;
+    }
+}
