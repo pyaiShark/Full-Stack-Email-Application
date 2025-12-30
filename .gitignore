@@ -1,0 +1,12 @@
+.vscode/
+.venv/
+*__pycache__/
+*.pyc
+*.sqlite3
+*.log
+.sass-cache
+style.css.map
+style.css
+node_modules
+package-lock.json
+package.json
