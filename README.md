@@ -289,6 +289,6 @@ Distributed under the MIT License. See [LICENSE](LICENSE) for more information.
 
 ## Contact
 
-Goutam Mandal - [Linkedin](www.linkedin.com/in/goutam-mandal-g000m)
+Goutam Mandal - [Linkedin](https://www.linkedin.com/in/goutam-mandal-g000m)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
