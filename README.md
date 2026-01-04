@@ -66,7 +66,6 @@ Tmail operates similarly to a real-time chat application but with an email inter
 - **Email Organization** - Categorize emails into Inbox, Sent, Archive, and Trash
 - **Responsive Design** - Works on desktop and mobile devices
 - **Custom Email Addresses** - Use personalized email addresses
-- **Fast API Backend** - Django-powered RESTful API endpoints
 
 ## 🛠 Tech Stack
 
@@ -74,7 +73,6 @@ Tmail operates similarly to a real-time chat application but with an email inter
 
 - **Django** - High-level Python web framework
 - **SQLite** - Lightweight database for data storage
-- **Django REST Framework** - For API endpoints (if applicable)
 
 ### Frontend
 
