@@ -254,9 +254,10 @@ tmail/
 │   ├── urls.py             # URL routing
 │   └── templates/          # HTML templates
 ├── static/
-│   ├── css                 # Compiled CSS
-│   ├── scss                # SCSS source files
-│   └── js                  # JavaScript files
+|──── mail/                 # app
+│     ├── css               # Compiled CSS
+│     ├── scss              # SCSS source files
+│     └── js                # JavaScript files
 ├── requirements.txt        # Python dependencies
 ├── manage.py              # Django management script
 └── README.md              # This file
