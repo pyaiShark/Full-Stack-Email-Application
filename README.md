@@ -23,6 +23,7 @@
   - [🚀 Getting Started](#-getting-started)
     - [Prerequisites](#prerequisites)
     - [Installation](#installation)
+      - [Clone repo](#clone-repo)
       - [Method 1: Using UV (Recommended)](#method-1-using-uv-recommended)
       - [Method 2: Using pip](#method-2-using-pip)
       - [Method 3: Using Docker](#method-3-using-docker)
@@ -66,7 +67,6 @@ Tmail operates similarly to a real-time chat application but with an email inter
 - **Email Organization** - Categorize emails into Inbox, Sent, Archive, and Trash
 - **Responsive Design** - Works on desktop and mobile devices
 - **Custom Email Addresses** - Use personalized email addresses
-- **Fast API Backend** - Django-powered RESTful API endpoints
 
 ## 🛠 Tech Stack
 
@@ -74,7 +74,6 @@ Tmail operates similarly to a real-time chat application but with an email inter
 
 - **Django** - High-level Python web framework
 - **SQLite** - Lightweight database for data storage
-- **Django REST Framework** - For API endpoints (if applicable)
 
 ### Frontend
 
@@ -99,6 +98,12 @@ Tmail operates similarly to a real-time chat application but with an email inter
 - Git
 
 ### Installation
+
+#### Clone repo
+```bash
+git clone https://github.com/pyaiShark/Full-Stack-Email-Application
+cd Full-Stack-Email-Application
+```
 
 #### Method 1: Using UV (Recommended)
 
@@ -250,9 +255,10 @@ tmail/
 │   ├── urls.py             # URL routing
 │   └── templates/          # HTML templates
 ├── static/
-│   ├── css/                # Compiled CSS
-│   ├── scss/               # SCSS source files
-│   └── js/                 # JavaScript files
+|   ├──mail/                # app
+│      ├── css              # Compiled CSS
+│      ├── scss             # SCSS source files
+│      └── js               # JavaScript files
 ├── requirements.txt        # Python dependencies
 ├── manage.py              # Django management script
 └── README.md              # This file
@@ -289,6 +295,6 @@ Distributed under the MIT License. See [LICENSE](LICENSE) for more information.
 
 ## Contact
 
-Goutam Mandal - [Linkedin](www.linkedin.com/in/goutam-mandal-g000m)
+Goutam Mandal - [Linkedin](https://www.linkedin.com/in/goutam-mandal-g000m)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
