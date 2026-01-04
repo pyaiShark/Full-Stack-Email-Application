@@ -98,6 +98,12 @@ Tmail operates similarly to a real-time chat application but with an email inter
 
 ### Installation
 
+#### Clone repo
+```bash
+git clone https://github.com/pyaiShark/Full-Stack-Email-Application
+cd Full-Stack-Email-Application
+```
+
 #### Method 1: Using UV (Recommended)
 
 ```bash
