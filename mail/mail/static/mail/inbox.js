@@ -82,11 +82,6 @@ function load_mailbox(mailbox) {
     document.querySelector("#view-email").style.display = "none";
     document.querySelector("#compose-view").style.display = "none";
 
-    let route = "emails";
-    if (mailbox === 'trash') {
-        route = 'trash';
-        mailbox = '';
-    }
 
     // Show the mailbox name with gradient
     setTimeout(() => {
@@ -98,6 +93,11 @@ function load_mailbox(mailbox) {
             </div>
         `;
 
+        let route = "emails";
+        if (mailbox === 'trash') {
+            route = 'trash';
+            mailbox = '';
+        }
         fetch(`/${route}/${mailbox}`)
             .then((response) => response.json())
             .then((emails) => {

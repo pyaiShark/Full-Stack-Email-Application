@@ -23,6 +23,7 @@
   - [🚀 Getting Started](#-getting-started)
     - [Prerequisites](#prerequisites)
     - [Installation](#installation)
+      - [Clone repo](#clone-repo)
       - [Method 1: Using UV (Recommended)](#method-1-using-uv-recommended)
       - [Method 2: Using pip](#method-2-using-pip)
       - [Method 3: Using Docker](#method-3-using-docker)
@@ -254,10 +255,10 @@ tmail/
 │   ├── urls.py             # URL routing
 │   └── templates/          # HTML templates
 ├── static/
-|──── mail/                 # app
-│     ├── css               # Compiled CSS
-│     ├── scss              # SCSS source files
-│     └── js                # JavaScript files
+|   ├──mail/                # app
+│      ├── css              # Compiled CSS
+│      ├── scss             # SCSS source files
+│      └── js               # JavaScript files
 ├── requirements.txt        # Python dependencies
 ├── manage.py              # Django management script
 └── README.md              # This file
