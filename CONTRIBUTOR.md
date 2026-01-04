@@ -54,15 +54,14 @@ Unsure where to begin contributing to Tmail? You can start by looking through th
 1. Fork the repository
 2. Clone your fork locally
    ```bash
-   git clone https://github.com/yourusername/tmail.git
-   cd tmail
+   git clone https://github.com/pyaiShark/Full-Stack-Email-Application
+   cd Full-Stack-Email-Application
    ```
 3. Set up the development environment
    ```bash
    uv venv
    source .venv/bin/activate
    uv pip install -r requirements.txt
-   uv pip install -r requirements-dev.txt  # Development dependencies
    ```
 4. Create a branch for your changes
    ```bash
